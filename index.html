@@ -8,11 +8,29 @@
         <title>vue-todolist</title>        
     </head>
     <body>
-        
-        
-        <!--js-->
-        <script type="text/javascript" src="js/scripts.js"></script>
+        <div id="app">
+
+            <h1>Todo List</h1>
+
+            <div>
+              <input v-model="newTodoText" type="text" placeholder="Nuovo todo">
+              <button @click="addTodo">Aggiungi</button>
+            </div>
+          
+
+            <ul>
+              <li v-for="(todo, index) in todos" :key="index" :class="{ done: todo.done }">
+                {{ todo.text }}                
+                <button @click="removeTodo(index)">X</button>
+              </li>
+            </ul>
+          </div>
+
+        </div>
+       
         <!--vue-->
         <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+        <!--js-->
+        <script type="text/javascript" src="js/scripts.js"></script>
     </body>
 </html>
